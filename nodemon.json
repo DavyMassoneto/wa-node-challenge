@@ -2,5 +2,5 @@
   "watch": ["build"],
   "ignore": ["node_modules"],
   "ext": "js",
-  "exec": "node --inspect=0.0.0.0 build/main"
+  "exec": "node -r dotenv/config --inspect=0.0.0.0 build/main"
 }
