@@ -20,7 +20,7 @@ services:
       - ./:/backend
       - /backend/node_modules
     ports:
-      - "3333:3333"
+      - "${EXTERNAL_HTTP_PORT}:${HTTP_PORT}"
       - "9229:9229"
     environment:
       - NODE_ENV=development
