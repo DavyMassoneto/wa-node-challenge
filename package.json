@@ -13,6 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1"
   },
   "devDependencies": {
@@ -40,7 +41,8 @@
   "scripts": {
     "start:dev": "concurrently --handle-input \"wait-on build/main.js && nodemon -L\" \"tsc -w -p tsconfig.build.json\"",
     "prepare": "husky install",
-    "commit": "cz"
+    "commit": "cz",
+    "container:install": "docker exec -it wa_challenge_backend yarn install"
   },
   "lint-staged": {
     "*.{js,json,css,scss,md,ts,html,graphql}": [
