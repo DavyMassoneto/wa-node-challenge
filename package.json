@@ -26,6 +26,8 @@
     "eslint-plugin-import": "^2.24.2",
     "eslint-plugin-import-helpers": "^1.1.0",
     "eslint-plugin-prettier": "^3.4.1",
+    "husky": "^7.0.2",
+    "lint-staged": "^11.1.2",
     "nodemon": "^2.0.12",
     "prettier": "^2.3.2",
     "ts-node": "^10.2.1",
@@ -33,6 +35,12 @@
     "wait-on": "^6.0.0"
   },
   "scripts": {
-    "start:dev": "concurrently --handle-input \"wait-on build/main.js && nodemon -L\" \"tsc -w -p tsconfig.build.json\""
+    "start:dev": "concurrently --handle-input \"wait-on build/main.js && nodemon -L\" \"tsc -w -p tsconfig.build.json\"",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,json,css,scss,md,ts,html,graphql}": [
+      "eslint --cache --fix"
+    ]
   }
 }
