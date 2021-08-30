@@ -1,17 +1,30 @@
 import csvParse from 'csv-parse'
 import fs from 'fs'
 
+import IStatesRepository from '../../repositories/IStatesRepository'
+
 class ImportStatesUseCase {
-  execute(file: Express.Multer.File): void {
-    const stream = fs.createReadStream(file.path)
+  constructor(private statesRepository: IStatesRepository) {}
 
-    const parseFile = csvParse({ delimiter: ';' })
+  async execute(file: Express.Multer.File): Promise<void> {
+    return new Promise((resolve, reject) => {
+      const stream = fs.createReadStream(file.path)
 
-    stream.pipe(parseFile)
+      const parseFile = csvParse({ delimiter: ';', encoding: 'utf-8' })
 
-    parseFile.on('data', async (line) => {
-      // eslint-disable-next-line no-console
-      console.log(line)
+      stream.pipe(parseFile)
+
+      parseFile
+        .on('data', async (line) => {
+          const [id, name, abbreviation] = line
+          await this.statesRepository.create({ id, name, abbreviation })
+        })
+        .on('end', () => {
+          resolve()
+        })
+        .on('error', (err) => {
+          reject(err)
+        })
     })
   }
 }

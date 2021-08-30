@@ -5,14 +5,14 @@ import ImportStatesUseCase from './ImportStatesUseCase'
 class ImportStatesController {
   constructor(private importStatesUseCase: ImportStatesUseCase) {}
 
-  handle(request: Request, response: Response): Response {
+  async handle(request: Request, response: Response): Promise<Response> {
     const { file } = request
 
     if (!file) {
       throw new Error('file not received')
     }
 
-    this.importStatesUseCase.execute(file)
+    await this.importStatesUseCase.execute(file)
 
     return response.send()
   }
