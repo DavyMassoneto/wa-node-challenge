@@ -11,9 +11,17 @@ class CitiesRepository implements ICitiesRepository {
   }
 
   async create({ id, name, state_abbreviation }: ICityDTO): Promise<City> {
-    const state = this.repository.create({ id, name, state_abbreviation })
+    const city = this.repository.create({ id, name, state_abbreviation })
 
-    return this.repository.save(state)
+    return this.repository.save(city)
+  }
+
+  async createMany(cities: ICityDTO[]): Promise<City[]> {
+    const cityEntities = cities.map(({ id, name, state_abbreviation }) =>
+      this.repository.create({ id, name, state_abbreviation }),
+    )
+
+    return this.repository.save(cityEntities)
   }
 
   async listByAbbreviation(state_abbreviation: string): Promise<City[]> {

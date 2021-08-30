@@ -14,6 +14,8 @@ interface ICitiesRepository {
   list(): Promise<City[]>
 
   create({ name, state_abbreviation }: ICityDTO): Promise<City>
+
+  createMany(cities: ICityDTO[]): Promise<City[]>
 }
 
 export default ICitiesRepository
