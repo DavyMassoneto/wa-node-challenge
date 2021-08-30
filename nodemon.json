@@ -2,5 +2,5 @@
   "watch": ["build"],
   "ignore": ["node_modules"],
   "ext": "js",
-  "exec": "node -r dotenv/config --inspect=0.0.0.0 build/main"
+  "exec": "node -r dotenv/config -r tsconfig-paths/register -r ts-node/register --inspect=0.0.0.0 build/main"
 }
