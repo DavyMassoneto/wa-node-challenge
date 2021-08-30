@@ -16,6 +16,10 @@ class CitiesRepository implements ICitiesRepository {
     return this.repository.save(city)
   }
 
+  async findById(id: number): Promise<City | undefined> {
+    return this.repository.findOne({ id })
+  }
+
   async createMany(cities: ICityDTO[]): Promise<City[]> {
     const cityEntities = cities.map(({ id, name, state_abbreviation }) =>
       this.repository.create({ id, name, state_abbreviation }),

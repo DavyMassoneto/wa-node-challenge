@@ -9,6 +9,8 @@ export interface ICityDTO {
 interface ICitiesRepository {
   findByName(name: string): Promise<City | undefined>
 
+  findById(id: number): Promise<City | undefined>
+
   listByAbbreviation(state_abbreviation: string): Promise<City[]>
 
   list(): Promise<City[]>
