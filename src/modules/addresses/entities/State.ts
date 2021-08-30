@@ -3,7 +3,7 @@ import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } fro
 @Entity('states')
 class State {
   @PrimaryColumn()
-  id: string
+  id: number
 
   @Column()
   name: string
