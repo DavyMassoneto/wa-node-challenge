@@ -23,6 +23,14 @@ export default class MigrationUtil {
   }
 
   /**
+   * Return integer options
+   * @param columnOptions
+   */
+  public static getIntegerColumn(columnOptions: ColumnOptions): TableColumnOptions {
+    return { ...columnOptions, type: 'integer' }
+  }
+
+  /**
    * Return varchar options
    * @param columnOptions
    */
