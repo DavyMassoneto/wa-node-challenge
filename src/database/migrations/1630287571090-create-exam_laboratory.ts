@@ -4,7 +4,7 @@ import MigrationUtil from '../../utils/migrationUtil'
 
 export default class createExamLaboratory1630287571090 implements MigrationInterface {
   private table = new Table({
-    name: 'exams',
+    name: 'exam_laboratory',
     columns: [
       MigrationUtil.getIDColumn(),
       MigrationUtil.getUuidColumn({ name: 'exam_id' }),
