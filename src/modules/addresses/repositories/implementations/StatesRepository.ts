@@ -10,8 +10,8 @@ class StatesRepository implements IStatesRepository {
     this.repository = getRepository(State)
   }
 
-  async create({ name, abbreviation }: IStateDTO): Promise<State> {
-    const state = this.repository.create({ name, abbreviation })
+  async create({ id, name, abbreviation }: IStateDTO): Promise<State> {
+    const state = this.repository.create({ id, name, abbreviation })
 
     return this.repository.save(state)
   }

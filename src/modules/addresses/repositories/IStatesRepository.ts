@@ -1,6 +1,7 @@
 import State from '../entities/State'
 
 export interface IStateDTO {
+  id: number
   name: string
   abbreviation: string
 }
