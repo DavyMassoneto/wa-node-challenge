@@ -11,10 +11,10 @@ class State {
   @Column()
   abbreviation: string
 
-  @CreateDateColumn({ name: 'createdAt' })
+  @CreateDateColumn()
   created_at: Date
 
-  @UpdateDateColumn({ name: 'updatedAt' })
+  @UpdateDateColumn()
   updated_at: Date
 }
 
