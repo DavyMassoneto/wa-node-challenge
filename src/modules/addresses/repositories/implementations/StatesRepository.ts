@@ -24,6 +24,10 @@ class StatesRepository implements IStatesRepository {
     return this.repository.findOne({ name })
   }
 
+  async findById(id: number): Promise<State | undefined> {
+    return this.repository.findOne({ id })
+  }
+
   async list(): Promise<State[]> {
     return this.repository.find()
   }

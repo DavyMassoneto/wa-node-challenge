@@ -9,6 +9,8 @@ export interface IStateDTO {
 interface IStatesRepository {
   findByName(name: string): Promise<State | undefined>
 
+  findById(id: number): Promise<State | undefined>
+
   findByAbbreviation(abbreviation: string): Promise<State | undefined>
 
   list(): Promise<State[]>
