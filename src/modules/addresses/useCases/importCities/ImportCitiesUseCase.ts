@@ -39,9 +39,16 @@ class ImportCitiesUseCase {
   }
 
   async execute(file: Express.Multer.File): Promise<void> {
-    const cities = await this.loadCities(file)
+    const loadedCities = await this.loadCities(file)
 
-    await this.citiesRepository.createMany(cities)
+    fs.unlinkSync(file.path)
+
+    const citiesToSave = loadedCities.filter(async (city) => {
+      const isCityExists = await this.citiesRepository.findById(city.id)
+      return !isCityExists
+    })
+
+    await this.citiesRepository.createMany(citiesToSave)
   }
 }
 
