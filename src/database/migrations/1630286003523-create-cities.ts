@@ -8,10 +8,18 @@ export default class createCities1630286003523 implements MigrationInterface {
     columns: [
       MigrationUtil.getIntegerColumn({ name: 'id', isPrimary: true }),
       MigrationUtil.getVarCharColumn({ name: 'name' }),
-      MigrationUtil.getIntegerColumn({ name: 'state_id' }),
+      MigrationUtil.getVarCharColumn({ name: 'state_abbreviation' }),
       ...MigrationUtil.getDefaultColumns(),
     ],
-    foreignKeys: [MigrationUtil.getForeignKey({ referencedTableName: 'states', columnName: 'state_id' })],
+    foreignKeys: [
+      {
+        referencedTableName: 'states',
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+        columnNames: ['state_abbreviation'],
+        referencedColumnNames: ['abbreviation'],
+      },
+    ],
   })
 
   public async up(queryRunner: QueryRunner): Promise<void> {

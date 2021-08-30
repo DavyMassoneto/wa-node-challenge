@@ -8,7 +8,7 @@ export default class createStates1630284403033 implements MigrationInterface {
     columns: [
       MigrationUtil.getIntegerColumn({ name: 'id', isPrimary: true }),
       MigrationUtil.getVarCharColumn({ name: 'name' }),
-      MigrationUtil.getVarCharColumn({ name: 'abbreviation' }),
+      MigrationUtil.getVarCharColumn({ name: 'abbreviation', isUnique: true }),
       ...MigrationUtil.getDefaultColumns(),
     ],
   })
