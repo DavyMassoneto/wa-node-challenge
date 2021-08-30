@@ -6,7 +6,7 @@ export default class createLaboratories1630286978425 implements MigrationInterfa
   private table = new Table({
     name: 'laboratories',
     columns: [
-      MigrationUtil.getIntegerColumn({ name: 'id', isPrimary: true }),
+      MigrationUtil.getIDColumn(),
       MigrationUtil.getVarCharColumn({ name: 'name' }),
       MigrationUtil.getVarCharColumn({ name: 'status' }),
       MigrationUtil.getIntegerColumn({ name: 'city_id' }),
