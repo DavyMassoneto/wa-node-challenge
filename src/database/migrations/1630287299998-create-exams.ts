@@ -6,10 +6,10 @@ export default class createExams1630287299998 implements MigrationInterface {
   private table = new Table({
     name: 'exams',
     columns: [
-      MigrationUtil.getIntegerColumn({ name: 'id', isPrimary: true }),
+      MigrationUtil.getIDColumn(),
       MigrationUtil.getVarCharColumn({ name: 'name' }),
       MigrationUtil.getVarCharColumn({ name: 'type' }),
-      MigrationUtil.getIntegerColumn({ name: 'status' }),
+      MigrationUtil.getVarCharColumn({ name: 'status' }),
       MigrationUtil.getVarCharColumn({ name: 'file_name' }),
       MigrationUtil.getVarCharColumn({ name: 'storage_name' }),
       ...MigrationUtil.getDefaultColumns(),
